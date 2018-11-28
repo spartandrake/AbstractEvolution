@@ -1,3 +1,3 @@
 package freecell;
 
-public enum SUIT {diamonds, hearts, clubs, spades}
+public enum SUIT {DIAMONDS, HEARTS, CLUBS, SPADES}
