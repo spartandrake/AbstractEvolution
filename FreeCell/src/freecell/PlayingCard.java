@@ -5,11 +5,19 @@ public class PlayingCard{
 	private SUIT suit;
 	private boolean visible;
 	private String name;
+	private String color;
 	
 	public PlayingCard(int value, SUIT suit, String name) {
 		this.value = value;
 		this.suit = suit;
 		this.name = name;
+		
+		if(suit == SUIT.SPADES || suit == SUIT.CLUBS) {
+			this.color = "BLACK";
+		}
+		else {
+			this.color = "RED";
+		}
 	}
 
 	public int getValue() {
@@ -26,6 +34,10 @@ public class PlayingCard{
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getColor() {
+		return color;
 	}
 	
 	public String toString() {
