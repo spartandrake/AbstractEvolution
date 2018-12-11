@@ -2,6 +2,7 @@ package freecell;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Deck {
 	private static ArrayList<PlayingCard> cards = new ArrayList<PlayingCard>(52);
@@ -116,11 +117,11 @@ public class Deck {
 		cards.add(c50);
 		cards.add(c51);
 		cards.add(c52);
-		shuffle();
+		//shuffle();
 	}
 	
-	public static void shuffle() {
-		Collections.shuffle(cards);
+	public void shuffle(long seed) {
+		Collections.shuffle(cards, new Random(seed));
 	}
 	
 	public PlayingCard deal() {
