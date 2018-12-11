@@ -1,6 +1,7 @@
+package freecell;
+
 import javafx.geometry.Insets;
-
-
+import freecell.playingTable;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class test2  extends Application{
+
+public class UI  extends Application{
 
 	Stage window;
 	
@@ -24,6 +26,18 @@ public class test2  extends Application{
 
 	@Override
 	public void start(Stage arg0) throws Exception {
+		// Open a user interface
+		// Create a playingTable
+		// Get user seed for deck
+		long userInput = 42;
+		playingTable table = new playingTable(userInput);
+		// Shuffle the deck, maybe use a seed
+		table.deal();
+		// Deal the cards
+		// Interact with user
+		//// Check for win
+		//// Check valid move
+		
 		window = arg0;
 		window.setTitle("AE FreeCell");
 		
@@ -81,7 +95,7 @@ public class test2  extends Application{
 		
 		
 		// Card
-		Label card1 = new Label("Ace of Spades");
+		Label card1 = new Label(table.getColumn().toString());
 		GridPane.setConstraints(card1, 0, 2);
 		
 		Label card2 = new Label("Ace of Clubs");
