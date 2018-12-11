@@ -33,6 +33,17 @@ public class playingTable {
 		tableColumns.get(3).push(deck.deal());
 		return true;
 	}
+	
+	public ArrayList<TableColumn> getTableColumns() {
+		return tableColumns;
+	}
+	public ArrayList<TableFreeCell> getTableFreeCells() {
+		return tableFreeCells;
+	}
+	public ArrayList<TableFoundation> getTableFoundations() {
+		return tableFoundations;
+	}
+	
 	public boolean isGameOver() {
 		if(tableFoundations.get(0).peek().getValue() == 13 && tableFoundations.get(1).peek().getValue() == 13 && tableFoundations.get(3).peek().getValue() == 13 && tableFoundations.get(3).peek().getValue() == 13) {
 			return true;
