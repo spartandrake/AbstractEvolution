@@ -6,5 +6,13 @@ public class TableColumn extends Stack implements Relocate{
 		super(capacity);
 	}
 	
-
+	public String toString()
+	{
+	    String str = "";
+	    while( !isEmpty() )
+	    {
+	        str += String.valueOf( pop() ) + "\n";
+	    }
+	    return str;
+	}
 }
