@@ -3,7 +3,6 @@ package freecell;
 public class PlayingCard{
 	private int value;
 	private SUIT suit;
-	private boolean visible;
 	private String name;
 	private String color;
 	
@@ -28,10 +27,6 @@ public class PlayingCard{
 		return suit;
 	}
 
-	public boolean isVisible() {
-		return visible;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -41,9 +36,6 @@ public class PlayingCard{
 	}
 	
 	public String toString() {
-		if(visible == false)
-			return "Hidden Card";
-		else
-			return name + " of " + suit;
+		return name + " of " + suit;
 	}
 }

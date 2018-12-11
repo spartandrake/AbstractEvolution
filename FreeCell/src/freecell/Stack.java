@@ -40,4 +40,20 @@ public class Stack {
 	public int size() {
         return size;
     }
+	public boolean equals(Stack that) {
+		if(this == that) {
+			return true;
+		}
+		else if(this.array.length == that.array.length) {
+			for(int i = 0; i < array.length; i++) {
+				if(this.array[i] != that.array[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

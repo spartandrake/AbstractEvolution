@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class UI  extends Application{
 
 	Stage window;
-	
+	Stack first = null;
 	public static void main(String[] args) {
 		launch(args);
 
@@ -38,6 +38,10 @@ public class UI  extends Application{
 		//// Check for win
 		//// Check valid move
 		
+		
+		
+		
+		
 		window = arg0;
 		window.setTitle("AE FreeCell");
 		
@@ -51,37 +55,73 @@ public class UI  extends Application{
 		grid.setVgap(8);
 		grid.setHgap(10);
 		
-		Label freeCell1 = new Label("Empty");
+		Label freeCell1 = new Label(table.getTableFreeCells().get(0).toString());
 		GridPane.setConstraints(freeCell1, 0, 0);
 		
-		Label freeCell2 = new Label("Empty");
+		Label freeCell2 = new Label(table.getTableFreeCells().get(1).toString());
 		GridPane.setConstraints(freeCell2, 1, 0);
 		
-		Label freeCell3 = new Label("Empty");
+		Label freeCell3 = new Label(table.getTableFreeCells().get(2).toString());
 		GridPane.setConstraints(freeCell3, 2, 0);
 		
-		Label freeCell4 = new Label("Empty");
+		Label freeCell4 = new Label(table.getTableFreeCells().get(3).toString());
 		GridPane.setConstraints(freeCell4, 3, 0);
 		
 		Button column9 = new Button("Free Cell 1");
 		GridPane.setConstraints(column9, 0, 1);
+		column9.setOnAction(e -> {
+			if(first == null) {
+				first = table.getTableFreeCells().get(0);
+			}
+			else {
+				table.moveCard(first, table.getTableFreeCells().get(0));
+				first = null;
+			}
+		});
 		Button column10 = new Button("Free Cell 2");
 		GridPane.setConstraints(column10, 1, 1);
+		column10.setOnAction(e -> {
+			if(first == null) {
+				first = table.getTableFreeCells().get(1);
+			}
+			else {
+				table.moveCard(first, table.getTableFreeCells().get(1));
+				first = null;
+			}
+		});
 		Button column11 = new Button("Free Cell 3");
 		GridPane.setConstraints(column11, 2, 1);
+		column11.setOnAction(e -> {
+			if(first == null) {
+				first = table.getTableFreeCells().get(2);
+			}
+			else {
+				table.moveCard(first, table.getTableFreeCells().get(2));
+				first = null;
+			}
+		});
 		Button column12 = new Button("Free Cell 4");
 		GridPane.setConstraints(column12, 3, 1);
+		column12.setOnAction(e -> {
+			if(first == null) {
+				first = table.getTableFreeCells().get(3);
+			}
+			else {
+				table.moveCard(first, table.getTableFreeCells().get(3));
+				first = null;
+			}
+		});
 		
-		Label foundation1 = new Label("Empty");
+		Label foundation1 = new Label(table.getTableFoundations().get(0).toString());
 		GridPane.setConstraints(foundation1, 4, 0);
 		
-		Label foundation2 = new Label("Empty");
+		Label foundation2 = new Label(table.getTableFoundations().get(1).toString());
 		GridPane.setConstraints(foundation2, 5, 0);
 		
-		Label foundation3 = new Label("Empty");
+		Label foundation3 = new Label(table.getTableFoundations().get(2).toString());
 		GridPane.setConstraints(foundation3, 6, 0);
 		
-		Label foundation4 = new Label("Empty");
+		Label foundation4 = new Label(table.getTableFoundations().get(3).toString());
 		GridPane.setConstraints(foundation4, 7, 0);
 		
 		Button column13 = new Button("Foundation 1");
@@ -95,28 +135,28 @@ public class UI  extends Application{
 		
 		
 		// Card
-		Label card1 = new Label(table.getColumn().toString());
+		Label card1 = new Label(table.getTableColumns().get(0).toString());
 		GridPane.setConstraints(card1, 0, 2);
 		
-		Label card2 = new Label("Ace of Clubs");
+		Label card2 = new Label(table.getTableColumns().get(1).toString());
 		GridPane.setConstraints(card2, 1, 2);
 		
-		Label card3 = new Label("Ace of Hearts");
+		Label card3 = new Label(table.getTableColumns().get(2).toString());
 		GridPane.setConstraints(card3, 2, 2);
 		
-		Label card4 = new Label("Ace of Diamonds");
+		Label card4 = new Label(table.getTableColumns().get(3).toString());
 		GridPane.setConstraints(card4, 3, 2);
 		
-		Label card5 = new Label("King of Spades");
+		Label card5 = new Label(table.getTableColumns().get(4).toString());
 		GridPane.setConstraints(card5, 4, 2);
 		
-		Label card6 = new Label("King of Clubs");
+		Label card6 = new Label(table.getTableColumns().get(5).toString());
 		GridPane.setConstraints(card6, 5, 2);
 		
-		Label card7 = new Label("King of Hearts");
+		Label card7 = new Label(table.getTableColumns().get(6).toString());
 		GridPane.setConstraints(card7, 6, 2);
 		
-		Label card8 = new Label("King of Diamonds");
+		Label card8 = new Label(table.getTableColumns().get(7).toString());
 		GridPane.setConstraints(card8, 7, 2);
 		
 		Button column1 = new Button("Column 1");
@@ -148,7 +188,7 @@ public class UI  extends Application{
 		borderPane.setCenter(grid);
 		
 		
-		int width = 1200, height = 250;
+		int width = 1200, height = 1000;
 		Scene scene = new Scene(borderPane, width, height);
 		scene.getStylesheets().add("theme.css");
 		window.setScene(scene);

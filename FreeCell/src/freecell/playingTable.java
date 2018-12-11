@@ -227,12 +227,12 @@ public class playingTable {
 		}
 	}
 	// TODO finish all of moveCard
-	public boolean moveCard(String source, String dest) {
-		if(source.equals("column1")) {
-			if(dest.equals("column1")) {
+	public boolean moveCard(Stack source, Stack dest) {
+		if(source.equals(tableColumns.get(0))) {
+			if(dest.equals(tableColumns.get(0))) {
 				//Do nothing
 			}
-			else if(dest.equals("column2")) {
+			else if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(0).pop());
 					return true;
@@ -241,7 +241,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column3")) {
+			else if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(0).pop());
 				}
@@ -249,7 +249,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column4")) {
+			else if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(0).pop());
 				}
@@ -257,7 +257,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column5")) {
+			else if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(0).pop());
 				}
@@ -265,7 +265,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column6")) {
+			else if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(0).pop());
 				}
@@ -273,7 +273,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column7")) {
+			else if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(0).pop());
 				}
@@ -281,7 +281,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column8")) {
+			else if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(0), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(0).pop());
 				}
@@ -289,7 +289,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell1")) {
+			else if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(0), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(0).pop());
 				}
@@ -297,7 +297,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell2")) {
+			else if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(0), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(0).pop());
 				}
@@ -305,7 +305,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell3")) {
+			else if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(0), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(0).pop());
 				}
@@ -313,7 +313,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell4")) {
+			else if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(0), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(0).pop());
 				}
@@ -321,7 +321,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation1")) {
+			else if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(0), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(0).pop());
 				}
@@ -329,7 +329,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation2")) {
+			else if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(0), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(0).pop());
 				}
@@ -337,7 +337,7 @@ public class playingTable {
 					return false;
 				}	
 			}
-			else if(dest.equals("foundation3")) {
+			else if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(0), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(0).pop());
 				}
@@ -345,7 +345,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation4")) {
+			else if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(0), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(0).pop());
 				}
@@ -357,11 +357,11 @@ public class playingTable {
 				return false;
 			}
 		}
-		else if(source.equals("column2")) {
-			if(dest.equals("column2")) {
+		else if(source.equals(tableColumns.get(1))) {
+			if(dest.equals(tableColumns.get(1))) {
 				//Do Nothing
 			}
-			else if(dest.equals("column1")) {
+			else if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(1).pop());
 					return true;
@@ -370,7 +370,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column3")) {
+			else if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(1).pop());
 					return true;
@@ -379,7 +379,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column4")) {
+			else if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(1).pop());
 					return true;
@@ -388,7 +388,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column5")) {
+			else if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(1).pop());
 					return true;
@@ -397,7 +397,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column6")) {
+			else if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(1).pop());
 					return true;
@@ -406,7 +406,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column7")) {
+			else if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(1).pop());
 					return true;
@@ -415,7 +415,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column8")) {
+			else if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(1), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(1).pop());
 					return true;
@@ -424,7 +424,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell1")) {
+			else if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(1), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(1).pop());
 				}
@@ -432,7 +432,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell2")) {
+			else if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(1), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(1).pop());
 				}
@@ -440,7 +440,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell3")) {
+			else if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(1), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(1).pop());
 				}
@@ -448,7 +448,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("freecell4")) {
+			else if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(1), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(1).pop());
 				}
@@ -456,7 +456,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation1")) {
+			else if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(1), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(1).pop());
 				}
@@ -464,7 +464,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation2")) {
+			else if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(1), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(1).pop());
 				}
@@ -472,7 +472,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation3")) {
+			else if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(1), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(1).pop());
 				}
@@ -480,7 +480,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("foundation4")) {
+			else if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(1), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(1).pop());
 				}
@@ -492,11 +492,11 @@ public class playingTable {
 				return false;
 			}
 		}
-		else if(source.equals("column3")) {
-			if(dest.equals("column3")) {
+		else if(source.equals(tableColumns.get(2))) {
+			if(dest.equals(tableColumns.get(2))) {
 				//Do Nothing
 			}
-			else if(dest.equals("column1")) {
+			else if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(2).pop());
 					return true;
@@ -505,7 +505,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column2")) {
+			else if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(2).pop());
 					return true;
@@ -514,7 +514,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column4")) {
+			else if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(2).pop());
 					return true;
@@ -523,7 +523,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column5")) {
+			else if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(2).pop());
 					return true;
@@ -532,7 +532,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column6")) {
+			else if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(2).pop());
 					return true;
@@ -541,7 +541,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column7")) {
+			else if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(2).pop());
 					return true;
@@ -550,7 +550,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			else if(dest.equals("column8")) {
+			else if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(2), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(2).pop());
 					return true;
@@ -559,7 +559,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(2), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(2).pop());
 				}
@@ -567,7 +567,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(2), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(2).pop());
 				}
@@ -575,7 +575,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(2), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(2).pop());
 				}
@@ -583,7 +583,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(2), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(2).pop());
 				}
@@ -591,7 +591,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(2), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(2).pop());
 				}
@@ -599,7 +599,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(2), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(2).pop());
 				}
@@ -607,7 +607,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(2), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(2).pop());
 				}
@@ -615,7 +615,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(2), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(2).pop());
 				}
@@ -624,11 +624,11 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("column4")) {
-			if(dest.equals("column4")) {
+		else if(source.equals(tableColumns.get(3))) {
+			if(dest.equals(tableColumns.get(3))) {
 				//Do Nothing
 			}
-			if(dest.equals("column1")) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(3).pop());
 					return true;
@@ -637,7 +637,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(3).pop());
 					return true;
@@ -646,7 +646,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(3).pop());
 					return true;
@@ -655,7 +655,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(3).pop());
 					return true;
@@ -664,7 +664,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(3).pop());
 					return true;
@@ -673,7 +673,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(3).pop());
 					return true;
@@ -682,7 +682,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(3), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(3).pop());
 					return true;
@@ -691,7 +691,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(3), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(3).pop());
 				}
@@ -699,7 +699,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(3), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(3).pop());
 				}
@@ -707,7 +707,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(3), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(3).pop());
 				}
@@ -715,7 +715,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(3), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(3).pop());
 				}
@@ -723,7 +723,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(3), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(3).pop());
 				}
@@ -731,7 +731,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(3), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(3).pop());
 				}
@@ -739,7 +739,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(3), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(3).pop());
 				}
@@ -747,7 +747,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(3), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(3).pop());
 				}
@@ -756,11 +756,11 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("column5")) {
-			if(dest.equals("column5")) {
+		else if(source.equals(tableColumns.get(4))) {
+			if(dest.equals(tableColumns.get(4))) {
 				//Do Nothing
 			}
-			if(dest.equals("column1")) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(4).pop());
 					return true;
@@ -769,7 +769,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(4).pop());
 					return true;
@@ -778,7 +778,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(4).pop());
 					return true;
@@ -787,7 +787,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(4).pop());
 					return true;
@@ -796,7 +796,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(4).pop());
 					return true;
@@ -805,7 +805,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(4).pop());
 					return true;
@@ -814,7 +814,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(4), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(4).pop());
 					return true;
@@ -823,7 +823,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(4), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(4).pop());
 				}
@@ -831,7 +831,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(4), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(4).pop());
 				}
@@ -839,7 +839,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(4), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(4).pop());
 				}
@@ -847,7 +847,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(4), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(4).pop());
 				}
@@ -855,7 +855,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(4), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(4).pop());
 				}
@@ -863,7 +863,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(4), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(4).pop());
 				}
@@ -871,7 +871,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(4), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(4).pop());
 				}
@@ -879,7 +879,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(4), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(4).pop());
 				}
@@ -888,11 +888,11 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("column6")) {
-			if(dest.equals("column6")) {
+		else if(source.equals(tableColumns.get(5))) {
+			if(dest.equals(tableColumns.get(5))) {
 				//Do Nothing
 			}
-			if(dest.equals("column1")) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(5).pop());
 					return true;
@@ -901,7 +901,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(5).pop());
 					return true;
@@ -910,7 +910,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(5).pop());
 					return true;
@@ -919,7 +919,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(5).pop());
 					return true;
@@ -928,7 +928,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(5).pop());
 					return true;
@@ -937,7 +937,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(5).pop());
 					return true;
@@ -946,7 +946,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(5), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(5).pop());
 					return true;
@@ -955,7 +955,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(5), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(5).pop());
 				}
@@ -963,7 +963,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(5), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(5).pop());
 				}
@@ -971,7 +971,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(5), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(5).pop());
 				}
@@ -979,7 +979,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(5), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(5).pop());
 				}
@@ -987,7 +987,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(5), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(5).pop());
 				}
@@ -995,7 +995,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(5), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(5).pop());
 				}
@@ -1003,7 +1003,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(5), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(5).pop());
 				}
@@ -1011,7 +1011,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(5), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(5).pop());
 				}
@@ -1020,11 +1020,11 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("column7")) {
-			if(dest.equals("column7")) {
+		else if(source.equals(tableColumns.get(6))) {
+			if(dest.equals(tableColumns.get(6))) {
 				//Do Nothing
 			}
-			if(dest.equals("column1")) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(6).pop());
 					return true;
@@ -1033,7 +1033,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(6).pop());
 					return true;
@@ -1042,7 +1042,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(6).pop());
 					return true;
@@ -1051,7 +1051,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(6).pop());
 					return true;
@@ -1060,7 +1060,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(6).pop());
 					return true;
@@ -1069,7 +1069,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(6).pop());
 					return true;
@@ -1078,7 +1078,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableColumns.get(6), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableColumns.get(6).pop());
 					return true;
@@ -1087,7 +1087,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(6), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(6).pop());
 				}
@@ -1095,7 +1095,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(6), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(6).pop());
 				}
@@ -1103,7 +1103,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(6), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(6).pop());
 				}
@@ -1111,7 +1111,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(6), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(6).pop());
 				}
@@ -1119,7 +1119,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(6), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(6).pop());
 				}
@@ -1127,7 +1127,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(6), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(6).pop());
 				}
@@ -1135,7 +1135,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(6), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(6).pop());
 				}
@@ -1143,7 +1143,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(6), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(6).pop());
 				}
@@ -1152,11 +1152,11 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("column8")) {
-			if(dest.equals("column8")) {
+		else if(source.equals(tableColumns.get(7))) {
+			if(dest.equals(tableColumns.get(7))) {
 				//Do Nothing
 			}
-			if(dest.equals("column1")) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableColumns.get(7).pop());
 					return true;
@@ -1165,7 +1165,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableColumns.get(7).pop());
 					return true;
@@ -1174,7 +1174,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableColumns.get(7).pop());
 					return true;
@@ -1183,7 +1183,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableColumns.get(7).pop());
 					return true;
@@ -1192,7 +1192,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableColumns.get(7).pop());
 					return true;
@@ -1201,7 +1201,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableColumns.get(7).pop());
 					return true;
@@ -1210,7 +1210,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableColumns.get(7), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableColumns.get(7).pop());
 					return true;
@@ -1219,7 +1219,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(7), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableColumns.get(7).pop());
 				}
@@ -1227,7 +1227,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(7), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableColumns.get(7).pop());
 				}
@@ -1235,7 +1235,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(7), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableColumns.get(7).pop());
 				}
@@ -1243,7 +1243,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(7), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableColumns.get(7).pop());
 				}
@@ -1251,7 +1251,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableColumns.get(7), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableColumns.get(7).pop());
 				}
@@ -1259,7 +1259,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableColumns.get(7), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableColumns.get(7).pop());
 				}
@@ -1267,7 +1267,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableColumns.get(7), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableColumns.get(7).pop());
 				}
@@ -1275,7 +1275,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableColumns.get(7), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableColumns.get(7).pop());
 				}
@@ -1284,8 +1284,8 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("freecell1")) {
-			if(dest.equals("column1")) {
+		else if(source.equals(tableFreeCells.get(0))) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1294,7 +1294,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1303,7 +1303,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1312,7 +1312,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1321,7 +1321,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1330,7 +1330,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1339,7 +1339,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1348,7 +1348,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableFreeCells.get(0), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1357,10 +1357,10 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				//Do Nothing
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(0), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1369,7 +1369,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(0), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1378,7 +1378,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(0), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1387,7 +1387,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(0), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1396,7 +1396,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(0), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1405,7 +1405,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(0), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1414,7 +1414,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(0), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableFreeCells.get(0).pop());
 					return true;
@@ -1424,8 +1424,8 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("freecell2")) {
-			if(dest.equals("column1")) {
+		else if(source.equals(tableFreeCells.get(1))) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1434,7 +1434,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1443,7 +1443,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1452,7 +1452,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1461,7 +1461,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1470,7 +1470,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1479,7 +1479,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1488,7 +1488,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableFreeCells.get(1), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1497,7 +1497,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(1), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1506,10 +1506,10 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				//Do Nothing
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(1), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1518,7 +1518,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(1), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1527,7 +1527,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(1), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1536,7 +1536,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(1), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1545,7 +1545,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(1), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1554,7 +1554,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(1), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableFreeCells.get(1).pop());
 					return true;
@@ -1564,8 +1564,8 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("freecell3")) {
-			if(dest.equals("column1")) {
+		else if(source.equals(tableFreeCells.get(2))) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1574,7 +1574,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1583,7 +1583,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1592,7 +1592,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1601,7 +1601,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1610,7 +1610,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1619,7 +1619,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1628,7 +1628,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableFreeCells.get(2), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1637,7 +1637,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(2), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1646,7 +1646,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(2), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1655,10 +1655,10 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				//Do Nothing
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(2), tableFreeCells.get(3))) {
 					tableFreeCells.get(3).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1667,7 +1667,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(2), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1676,7 +1676,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(2), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1685,7 +1685,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(2), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1694,7 +1694,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(2), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableFreeCells.get(2).pop());
 					return true;
@@ -1704,8 +1704,8 @@ public class playingTable {
 				}
 			}
 		}
-		else if(source.equals("freecell4")) {
-			if(dest.equals("column1")) {
+		else if(source.equals(tableFreeCells.get(3))) {
+			if(dest.equals(tableColumns.get(0))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(0))) {
 					tableColumns.get(0).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1714,7 +1714,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column2")) {
+			if(dest.equals(tableColumns.get(1))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(1))) {
 					tableColumns.get(1).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1723,7 +1723,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column3")) {
+			if(dest.equals(tableColumns.get(2))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(2))) {
 					tableColumns.get(2).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1732,7 +1732,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column4")) {
+			if(dest.equals(tableColumns.get(3))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(3))) {
 					tableColumns.get(3).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1741,7 +1741,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column5")) {
+			if(dest.equals(tableColumns.get(4))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(4))) {
 					tableColumns.get(4).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1750,7 +1750,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column6")) {
+			if(dest.equals(tableColumns.get(5))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(5))) {
 					tableColumns.get(5).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1759,7 +1759,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column7")) {
+			if(dest.equals(tableColumns.get(6))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(6))) {
 					tableColumns.get(6).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1768,7 +1768,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("column8")) {
+			if(dest.equals(tableColumns.get(7))) {
 				if(validMove(tableFreeCells.get(3), tableColumns.get(7))) {
 					tableColumns.get(7).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1777,7 +1777,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(3), tableFreeCells.get(0))) {
 					tableFreeCells.get(0).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1786,7 +1786,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(3), tableFreeCells.get(1))) {
 					tableFreeCells.get(1).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1795,7 +1795,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(3), tableFreeCells.get(2))) {
 					tableFreeCells.get(2).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1804,10 +1804,10 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("freecell4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				//Do Nothing
 			}
-			if(dest.equals("foundation1")) {
+			if(dest.equals(tableFreeCells.get(0))) {
 				if(validMove(tableFreeCells.get(3), tableFoundations.get(0))) {
 					tableFoundations.get(0).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1816,7 +1816,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation2")) {
+			if(dest.equals(tableFreeCells.get(1))) {
 				if(validMove(tableFreeCells.get(3), tableFoundations.get(1))) {
 					tableFoundations.get(1).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1825,7 +1825,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation3")) {
+			if(dest.equals(tableFreeCells.get(2))) {
 				if(validMove(tableFreeCells.get(3), tableFoundations.get(2))) {
 					tableFoundations.get(2).push(tableFreeCells.get(3).pop());
 					return true;
@@ -1834,7 +1834,7 @@ public class playingTable {
 					return false;
 				}
 			}
-			if(dest.equals("foundation4")) {
+			if(dest.equals(tableFreeCells.get(3))) {
 				if(validMove(tableFreeCells.get(3), tableFoundations.get(3))) {
 					tableFoundations.get(3).push(tableFreeCells.get(3).pop());
 					return true;
