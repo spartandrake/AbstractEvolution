@@ -7,9 +7,9 @@ public class Driver {
 		// Create a playingTable
 		// Get user seed for deck
 		long userInput = 42;
-		playingTable table = new playingTable(userInput);
+		//playingTable table = new playingTable(userInput);
 		// Shuffle the deck, maybe use a seed
-		table.deal();
+		//table.deal();
 		// Deal the cards
 		// Interact with user
 		//// Check for win

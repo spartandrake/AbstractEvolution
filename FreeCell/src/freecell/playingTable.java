@@ -9,8 +9,13 @@ public class playingTable {
 	private ArrayList<TableFreeCell> tableFreeCells = new ArrayList<TableFreeCell>();
 	private ArrayList<TableFoundation> tableFoundations = new ArrayList<TableFoundation>();
 	private Deck deck = new Deck();
-	public playingTable(long seed) {
-		deck.shuffle(seed);
+	public playingTable(long seed, boolean cheat) {
+		if(cheat) {
+			deck.reverse();
+		}
+		else {
+			deck.shuffle(seed);
+		}
 		for(int i = 0; i < 8; i++) {
 			tableColumns.add(new TableColumn(52));
 		}

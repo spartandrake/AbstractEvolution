@@ -62,10 +62,31 @@ public class UI  extends Application{
 	
 	playingTable table;
 	
+	static long seed = 42;
+	static boolean cheat = false;
 	
+	/* Pass an argument for it to be the seed of the program. If nothing is received a random seed is used.
+	 * If you pass the word "Cheater" then the deck will not shuffle and it is easier to see how the game works once you win.
+	 */
 	public static void main(String[] args) {
+		if(args.length != 0) {
+			if(args[0].equals("Cheater")) {
+				cheat = true;
+			}
+			else {
+				try {
+					seed = Integer.parseInt(args[0]);
+				}
+				catch(Exception e) {
+					
+				}
+			}
+		}
+		else {
+			Random rand = new Random();
+			seed = rand.nextLong();
+		}
 		launch(args);
-
 	}
 
 	public void updateText() {
@@ -92,9 +113,9 @@ public class UI  extends Application{
 		// Open a user interface
 		// Create a playingTable
 		// Get user seed for deck
-		Random rand = new Random(1);
-		long userInput = rand.nextLong();
-		table = new playingTable(userInput);
+		//Random rand = new Random(1);
+		//long userInput = rand.nextLong();
+		table = new playingTable(seed, cheat);
 		// Shuffle the deck, maybe use a seed
 		table.deal();
 		// Deal the cards
@@ -309,6 +330,10 @@ public class UI  extends Application{
 				foundation2.setText(table.getTableFoundations().get(1).toString());
 				foundation3.setText(table.getTableFoundations().get(2).toString());
 				foundation4.setText(table.getTableFoundations().get(3).toString());
+				
+				if(table.isGameOver()) {
+					WinScreen.Display();
+				}
 			}
 		});
 		Button column14 = new Button("Foundation 2");
@@ -340,6 +365,9 @@ public class UI  extends Application{
 				foundation2.setText(table.getTableFoundations().get(1).toString());
 				foundation3.setText(table.getTableFoundations().get(2).toString());
 				foundation4.setText(table.getTableFoundations().get(3).toString());
+				if(table.isGameOver()) {
+					WinScreen.Display();
+				}
 			}
 		});
 		Button column15 = new Button("Foundation 3");
@@ -371,6 +399,9 @@ public class UI  extends Application{
 				foundation2.setText(table.getTableFoundations().get(1).toString());
 				foundation3.setText(table.getTableFoundations().get(2).toString());
 				foundation4.setText(table.getTableFoundations().get(3).toString());
+				if(table.isGameOver()) {
+					WinScreen.Display();
+				}
 			}
 		});
 		Button column16 = new Button("Foundation 4");
@@ -402,6 +433,9 @@ public class UI  extends Application{
 				foundation2.setText(table.getTableFoundations().get(1).toString());
 				foundation3.setText(table.getTableFoundations().get(2).toString());
 				foundation4.setText(table.getTableFoundations().get(3).toString());
+				if(table.isGameOver()) {
+					WinScreen.Display();
+				}
 			}
 		});
 		

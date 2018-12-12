@@ -80,7 +80,6 @@ public class Deck {
 		cards.add(c14);
 		cards.add(c15);
 		cards.add(c16);
-		cards.add(c16);
 		cards.add(c17);
 		cards.add(c18);
 		cards.add(c19);
@@ -120,6 +119,9 @@ public class Deck {
 		//shuffle();
 	}
 	
+	protected void reverse() {
+		Collections.reverse(cards);
+	}
 	public void shuffle(long seed) {
 		Collections.shuffle(cards, new Random(seed));
 	}
