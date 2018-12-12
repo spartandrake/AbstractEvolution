@@ -36,6 +36,6 @@ public class PlayingCard{
 	}
 	
 	public String toString() {
-		return name + " of " + suit;
+		return name;
 	}
 }
