@@ -24,6 +24,7 @@ public class test2  extends Application{
 
 	@Override
 	public void start(Stage arg0) throws Exception {
+		
 		window = arg0;
 		window.setTitle("AE FreeCell");
 		

@@ -1,6 +1,9 @@
 package freecell;
 
 import javafx.geometry.Insets;
+
+import java.util.Random;
+
 import freecell.playingTable;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -18,28 +21,84 @@ import javafx.stage.Stage;
 public class UI  extends Application{
 
 	Stage window;
+	GridPane grid;
 	Stack first = null;
+	
+	Label card1;
+	Label card2;
+	Label card3;
+	Label card4;
+	Label card5;
+	Label card6;
+	Label card7;
+	Label card8;
+	Label freeCell1;
+	Label freeCell2;
+	Label freeCell3;
+	Label freeCell4;
+	Label foundation1;
+	Label foundation2;
+	Label foundation3;
+	Label foundation4;
+	
+	Button column1;
+	Button column2;
+	Button column3;
+	Button column4;
+	Button column5;
+	Button column6;
+	Button column7;
+	Button column8;
+	Button column9;
+	Button column10;
+	Button column11;
+	Button column12;
+	Button column13;
+	Button column14;
+	Button column15;
+	Button column16;
+	
+	playingTable table;
+	
+	
 	public static void main(String[] args) {
 		launch(args);
 
 	}
 
+	public void updateText() {
+		card1 = new Label(table.getTableColumns().get(0).toString());
+		card2 = new Label(table.getTableColumns().get(1).toString());
+		card3 = new Label(table.getTableColumns().get(2).toString());
+		card4 = new Label(table.getTableColumns().get(3).toString());
+		card5 = new Label(table.getTableColumns().get(4).toString());
+		card6 = new Label(table.getTableColumns().get(5).toString());
+		card7 = new Label(table.getTableColumns().get(6).toString());
+		card8 = new Label(table.getTableColumns().get(7).toString());
+		freeCell1 = new Label(table.getTableFreeCells().get(0).toString());		
+		freeCell2 = new Label(table.getTableFreeCells().get(1).toString());
+		freeCell3 = new Label(table.getTableFreeCells().get(2).toString());
+		freeCell4 = new Label(table.getTableFreeCells().get(3).toString());
+		foundation1 = new Label(table.getTableFoundations().get(0).toString());
+		foundation2 = new Label(table.getTableFoundations().get(1).toString());
+		foundation3 = new Label(table.getTableFoundations().get(2).toString());
+		foundation4 = new Label(table.getTableFoundations().get(3).toString());
+		
+	}
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// Open a user interface
 		// Create a playingTable
 		// Get user seed for deck
-		long userInput = 42;
-		playingTable table = new playingTable(userInput);
+		Random rand = new Random(1);
+		long userInput = rand.nextLong();
+		table = new playingTable(userInput);
 		// Shuffle the deck, maybe use a seed
 		table.deal();
 		// Deal the cards
 		// Interact with user
 		//// Check for win
 		//// Check valid move
-		
-		
-		
 		
 		
 		window = arg0;
@@ -50,131 +109,574 @@ public class UI  extends Application{
 		Button retryGame = new Button("Retry");
 		topMenu.getChildren().addAll(newGame, retryGame);
 		
-		GridPane grid = new GridPane();
+		grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
 		grid.setVgap(8);
 		grid.setHgap(10);
 		
-		Label freeCell1 = new Label(table.getTableFreeCells().get(0).toString());
+		freeCell1 = new Label(table.getTableFreeCells().get(0).toString());
 		GridPane.setConstraints(freeCell1, 0, 0);
 		
-		Label freeCell2 = new Label(table.getTableFreeCells().get(1).toString());
+		freeCell2 = new Label(table.getTableFreeCells().get(1).toString());
 		GridPane.setConstraints(freeCell2, 1, 0);
 		
-		Label freeCell3 = new Label(table.getTableFreeCells().get(2).toString());
+		freeCell3 = new Label(table.getTableFreeCells().get(2).toString());
 		GridPane.setConstraints(freeCell3, 2, 0);
 		
-		Label freeCell4 = new Label(table.getTableFreeCells().get(3).toString());
+		freeCell4 = new Label(table.getTableFreeCells().get(3).toString());
 		GridPane.setConstraints(freeCell4, 3, 0);
 		
-		Button column9 = new Button("Free Cell 1");
+		column9 = new Button("Free Cell 1");
 		GridPane.setConstraints(column9, 0, 1);
-		column9.setOnAction(e -> {
+		column9.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableFreeCells().get(0);
+				}
+				else {
+					table.moveCard(first, table.getTableFreeCells().get(0));
+					first = null;
+				}
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		/*
+		 * 
+		 	column9.setOnAction(e -> {
+		 
 			if(first == null) {
 				first = table.getTableFreeCells().get(0);
 			}
 			else {
 				table.moveCard(first, table.getTableFreeCells().get(0));
 				first = null;
-			}
+				
+				System.out.println(table.getTableFreeCells().get(0));
+			}	
 		});
-		Button column10 = new Button("Free Cell 2");
+		*/
+		column10 = new Button("Free Cell 2");
 		GridPane.setConstraints(column10, 1, 1);
-		column10.setOnAction(e -> {
-			if(first == null) {
-				first = table.getTableFreeCells().get(1);
-			}
-			else {
-				table.moveCard(first, table.getTableFreeCells().get(1));
-				first = null;
+		column10.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableFreeCells().get(1);
+				}
+				else {
+					table.moveCard(first, table.getTableFreeCells().get(1));
+					first = null;
+				}
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
 			}
 		});
-		Button column11 = new Button("Free Cell 3");
+		column11 = new Button("Free Cell 3");
 		GridPane.setConstraints(column11, 2, 1);
-		column11.setOnAction(e -> {
-			if(first == null) {
-				first = table.getTableFreeCells().get(2);
-			}
-			else {
-				table.moveCard(first, table.getTableFreeCells().get(2));
-				first = null;
+		column11.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableFreeCells().get(2);
+				}
+				else {
+					table.moveCard(first, table.getTableFreeCells().get(2));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
 			}
 		});
-		Button column12 = new Button("Free Cell 4");
+		column12 = new Button("Free Cell 4");
 		GridPane.setConstraints(column12, 3, 1);
-		column12.setOnAction(e -> {
-			if(first == null) {
-				first = table.getTableFreeCells().get(3);
-			}
-			else {
-				table.moveCard(first, table.getTableFreeCells().get(3));
-				first = null;
+		column12.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableFreeCells().get(3);
+				}
+				else {
+					table.moveCard(first, table.getTableFreeCells().get(3));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
 			}
 		});
 		
-		Label foundation1 = new Label(table.getTableFoundations().get(0).toString());
+		foundation1 = new Label(table.getTableFoundations().get(0).toString());
 		GridPane.setConstraints(foundation1, 4, 0);
 		
-		Label foundation2 = new Label(table.getTableFoundations().get(1).toString());
+		foundation2 = new Label(table.getTableFoundations().get(1).toString());
 		GridPane.setConstraints(foundation2, 5, 0);
 		
-		Label foundation3 = new Label(table.getTableFoundations().get(2).toString());
+		foundation3 = new Label(table.getTableFoundations().get(2).toString());
 		GridPane.setConstraints(foundation3, 6, 0);
 		
-		Label foundation4 = new Label(table.getTableFoundations().get(3).toString());
+		foundation4 = new Label(table.getTableFoundations().get(3).toString());
 		GridPane.setConstraints(foundation4, 7, 0);
 		
 		Button column13 = new Button("Foundation 1");
 		GridPane.setConstraints(column13, 4, 1);
+		column13.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					
+				}
+				else {
+					table.moveCard(first, table.getTableFoundations().get(0));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
 		Button column14 = new Button("Foundation 2");
 		GridPane.setConstraints(column14, 5, 1);
+		column14.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					
+				}
+				else {
+					table.moveCard(first, table.getTableFoundations().get(1));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
 		Button column15 = new Button("Foundation 3");
 		GridPane.setConstraints(column15, 6, 1);
+		column15.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					
+				}
+				else {
+					table.moveCard(first, table.getTableFoundations().get(2));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
 		Button column16 = new Button("Foundation 4");
 		GridPane.setConstraints(column16, 7, 1);
+		column16.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					
+				}
+				else {
+					table.moveCard(first, table.getTableFoundations().get(3));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
 		
 		
 		// Card
-		Label card1 = new Label(table.getTableColumns().get(0).toString());
+		card1 = new Label(table.getTableColumns().get(0).toString());
 		GridPane.setConstraints(card1, 0, 2);
 		
-		Label card2 = new Label(table.getTableColumns().get(1).toString());
+		card2 = new Label(table.getTableColumns().get(1).toString());
 		GridPane.setConstraints(card2, 1, 2);
 		
-		Label card3 = new Label(table.getTableColumns().get(2).toString());
+		card3 = new Label(table.getTableColumns().get(2).toString());
 		GridPane.setConstraints(card3, 2, 2);
 		
-		Label card4 = new Label(table.getTableColumns().get(3).toString());
+		card4 = new Label(table.getTableColumns().get(3).toString());
 		GridPane.setConstraints(card4, 3, 2);
 		
-		Label card5 = new Label(table.getTableColumns().get(4).toString());
+		card5 = new Label(table.getTableColumns().get(4).toString());
 		GridPane.setConstraints(card5, 4, 2);
 		
-		Label card6 = new Label(table.getTableColumns().get(5).toString());
+		card6 = new Label(table.getTableColumns().get(5).toString());
 		GridPane.setConstraints(card6, 5, 2);
 		
-		Label card7 = new Label(table.getTableColumns().get(6).toString());
+		card7 = new Label(table.getTableColumns().get(6).toString());
 		GridPane.setConstraints(card7, 6, 2);
 		
-		Label card8 = new Label(table.getTableColumns().get(7).toString());
+		card8 = new Label(table.getTableColumns().get(7).toString());
 		GridPane.setConstraints(card8, 7, 2);
 		
 		Button column1 = new Button("Column 1");
 		GridPane.setConstraints(column1, 0, 3);
-		Button column2 = new Button("Column 2");
+		column1.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(0);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(0));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column2 = new Button("Column 2");
 		GridPane.setConstraints(column2, 1, 3);
-		Button column3 = new Button("Column 3");
+		column2.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(1);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(1));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column3 = new Button("Column 3");
 		GridPane.setConstraints(column3, 2, 3);
-		Button column4 = new Button("Column 4");
+		column3.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(2);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(2));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column4 = new Button("Column 4");
 		GridPane.setConstraints(column4, 3, 3);
-		Button column5 = new Button("Column 5");
+		column4.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(3);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(3));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column5 = new Button("Column 5");
 		GridPane.setConstraints(column5, 4, 3);
-		Button column6 = new Button("Column 6");
+		column5.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(4);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(4));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column6 = new Button("Column 6");
 		GridPane.setConstraints(column6, 5, 3);
-		Button column7 = new Button("Column 7");
+		column6.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(5);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(5));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column7 = new Button("Column 7");
 		GridPane.setConstraints(column7, 6, 3);
-		Button column8 = new Button("Column 8");
+		column7.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(6);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(6));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
+		column8 = new Button("Column 8");
 		GridPane.setConstraints(column8, 7, 3);
+		column8.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				if(first == null) {
+					first = table.getTableColumns().get(7);
+				}
+				else {
+					table.moveCard(first, table.getTableColumns().get(7));
+					first = null;
+				}	
+				card1.setText(table.getTableColumns().get(0).toString());
+				card2.setText(table.getTableColumns().get(1).toString());
+				card3.setText(table.getTableColumns().get(2).toString());
+				card4.setText(table.getTableColumns().get(3).toString());
+				card5.setText(table.getTableColumns().get(4).toString());
+				card6.setText(table.getTableColumns().get(5).toString());
+				card7.setText(table.getTableColumns().get(6).toString());
+				card8.setText(table.getTableColumns().get(7).toString());
+				
+				freeCell1.setText(table.getTableFreeCells().get(0).toString());
+				freeCell2.setText(table.getTableFreeCells().get(1).toString());
+				freeCell3.setText(table.getTableFreeCells().get(2).toString());
+				freeCell4.setText(table.getTableFreeCells().get(3).toString());
+				
+				foundation1.setText(table.getTableFoundations().get(0).toString());
+				foundation2.setText(table.getTableFoundations().get(1).toString());
+				foundation3.setText(table.getTableFoundations().get(2).toString());
+				foundation4.setText(table.getTableFoundations().get(3).toString());
+			}
+		});
 		
 		grid.getChildren().addAll(foundation1, foundation2, foundation3, foundation4);
 		grid.getChildren().addAll(column13, column14, column15, column16);
@@ -190,9 +692,9 @@ public class UI  extends Application{
 		
 		int width = 1200, height = 1000;
 		Scene scene = new Scene(borderPane, width, height);
-		scene.getStylesheets().add("theme.css");
+		//scene.getStylesheets().add("theme.css");
 		window.setScene(scene);
 		window.show();
-	}
 
+	}
 }

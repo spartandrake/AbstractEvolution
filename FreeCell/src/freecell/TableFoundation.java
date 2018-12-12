@@ -8,11 +8,24 @@ public class TableFoundation extends Stack implements Relocate {
 	}
 	public String toString()
 	{
+		/*
+		Stack tempStack = new Stack(this.getCapacity());
 	    String str = "";
 	    while( !isEmpty() )
 	    {
-	        str += String.valueOf( pop() ) + "\n";
+	    	PlayingCard temp = pop();
+	        str += String.valueOf( temp ) + "\n";
+	        tempStack.push(temp);
 	    }
-	    return str;
+	    while(!tempStack.isEmpty()) {
+	    	this.push(tempStack.pop());
+	    }
+	    */
+		if(isEmpty()) {
+			return "Empty";
+		}
+		else {
+			return this.peek() + "";
+		}
 	}
 }

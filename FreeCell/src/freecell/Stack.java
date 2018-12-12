@@ -5,9 +5,15 @@ import java.util.NoSuchElementException;
 public class Stack {
 	private PlayingCard[] array;
     private int size = 0;
+    private int cap;
 
     public Stack(int capacity) {
-        array = new PlayingCard[capacity];
+    	cap = capacity;
+        array = new PlayingCard[cap];
+    }
+    
+    public int getCapacity() {
+    	return cap;
     }
 
     public void push(PlayingCard card) {
